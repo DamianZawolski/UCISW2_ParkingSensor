@@ -1,2 +1,2 @@
 # UCISW2_ParkingSensor
-VHDL Project of parking sensor with use of YX5300 distance sensor.
+VHDL project of parking sensor with use of YX5300 distance sensor.
