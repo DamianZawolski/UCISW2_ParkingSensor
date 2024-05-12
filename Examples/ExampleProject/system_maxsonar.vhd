@@ -9,8 +9,8 @@ entity system_maxsonar is
            measure : in  STD_LOGIC;
            mode : in  STD_LOGIC;
            alarm : OUT STD_LOGIC;           
-		     trigger : OUT std_logic;
-		     data_valid : OUT std_logic;
+			trigger : OUT std_logic;
+		    data_valid : OUT std_logic;
            an : OUT std_logic_vector(7 downto 0);
 		     ca : OUT std_logic;
 		     cb : OUT std_logic;
