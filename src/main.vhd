@@ -78,8 +78,20 @@ begin
          end case;
       end if;
    end process;
+
+	      -- zarządzanie trybem ciągłym
+    --Pprincipal: process(clk, reset)
+    --begin
+    --    if (reset = '1') then
+    --        start <= '0';
+    --    elsif rising_edge(clk) then
+    --        start <= '1';
+    --    end if;
+   -- end process;
+
+		
    
-   Pclk_muylength:process(clk, reset)
+   Pclk_counter:process(clk, reset)
    begin
       if (reset = '1') then
          clk_length <= (others => '0');
