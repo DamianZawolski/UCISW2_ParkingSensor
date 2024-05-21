@@ -12,7 +12,7 @@ entity main is
 				distance_in : in std_logic_vector(10 downto 0);
             start : OUT STD_LOGIC;      
             alarm : OUT STD_LOGIC;      -- dioda 
-            distance_out : out std_logic_vector(10 downto 0);
+            distance_out : out std_logic_vector(12 downto 0);
             
         );
 end main;
@@ -31,27 +31,13 @@ architecture Behavioral of main is
 		);
 	END COMPONENT;
 
-   -- TODO: Component LCD contorller
-
-
    signal start : std_logic;         
    type state_type is (continuous, unitary);
    signal state: state_type;
-   signal clk_length : unsigned(26 downto 0);   -- potezny licznik??
+   signal clk_length : unsigned(26 downto 0);
 
 begin
 
---   Inst_control_maxsonar: control_maxsonar PORT MAP(
---		clk => clk,
---		reset => reset,
---		start => start,
---		echo => echo,
---		trigger => trigger,
---		data_valid => data_valid,
---		distance => distance
---	);
-
-   -- tu powinien byæ pod³¹czony modu³ odpowiedzialny za wypisayanie na LCD
 
    
     -- zarz¹dznie tym czy pomiar jednorazowy czy ci¹g³y
@@ -76,7 +62,7 @@ begin
 --      end if;
 --   end process;
 
-	-- zarzadzanie trybem ci¹g³ym
+
     Pprincipal: process(clk, reset)
     begin
         if (reset = '1') then
@@ -86,9 +72,10 @@ begin
         end if;
     end process;
 
+    -- W tej wersji OUT jest 13bitowe!!!
     Pdistance: process(clk, distance_in)
     begin
-      distance_out = distance_in;
+      distance_out = "00" & distance_in; -- dodanie 12 i 13 bitu by móc wykorzystać to w bin2bcd!!
     end process;
    
    Pclk_counter:process(clk, reset)

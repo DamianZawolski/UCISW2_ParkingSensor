@@ -10,6 +10,7 @@ entity bin2bcd is
            dec : out  STD_LOGIC_VECTOR (3 downto 0);
            cen : out  STD_LOGIC_VECTOR (3 downto 0);
            mil : out  STD_LOGIC_VECTOR (3 downto 0));
+           BCD : out STD_LOGIC_VECTOR (15 downto 0)
 end bin2bcd;
 
 architecture Behavioral of bin2bcd is
@@ -76,10 +77,11 @@ begin
                 end if;
               end if;
             when finished =>
-              ud  <= std_logic_vector(bcd4( 3 downto  0));
-              dec <= std_logic_vector(bcd4( 7 downto  4));
-              cen <= std_logic_vector(bcd4(11 downto  8));
-              mil <= std_logic_vector(bcd4(15 downto 12));
+            --   ud  <= std_logic_vector(bcd4( 3 downto  0));
+            --   dec <= std_logic_vector(bcd4( 7 downto  4));
+            --   cen <= std_logic_vector(bcd4(11 downto  8));
+            --   mil <= std_logic_vector(bcd4(15 downto 12));
+              BCD <= std_logic_vector(bcd4(15 downto 0));   -- DODANO WYJSCIE POLACZONE 4 ZAKODOWANE CYFRY!!
               state := loading;
         end case;
      end if;
